@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package pb;
+
+service CompanyService {
+    rpc CreateCompany (Company) returns (Response) {
+    }
+    rpc GetCompanies (GetRequest) returns (Response) {
+    }
+}
+
+message Company {
+    string id = 1;
+    string name = 2;
+    repeated Employee employees = 3;
+}
+
+message Employee {
+    string id = 1;
+    Person person = 2;
+}
+
+message Person {
+    string id = 1;
+    string firstName = 2;
+    string lastName = 3;
+}
+
+message GetRequest {
+}
+
+message Response {
+    bool created = 1;
+    Company company = 2;
+    repeated Company companies = 3;
+}
